@@ -1,16 +1,23 @@
 package uml.umlButton;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import uml.umlAction.Mode;
+import uml.umlAction.Mode.CurrentMode;
+
 public class ClassButton extends MyButton {
 
 	public ClassButton(String buttonType) {
 		super(buttonType);
-		// TODO Auto-generated constructor stub
+		this.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Mode.changeMode(CurrentMode.CLASS);
+            }
+        });
 	}
 
-	@Override
-	public void onClicked() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

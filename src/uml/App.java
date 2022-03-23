@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+
 import uml.umlButton.AssociationLineButton;
 import uml.umlButton.ClassButton;
 import uml.umlButton.CompositionLineButton;
@@ -21,13 +22,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.GridLayout;
-import javax.swing.JComboBox;
 import java.awt.Canvas;
 import java.awt.Color;
+import javax.swing.JTextPane;
+import javax.swing.JLayeredPane;
 
 public class App {
 
 	private JFrame frame;
+	static public MyCanvas mainCanvas ;
 	static ArrayList<MyButton> buttonList = new ArrayList<MyButton>();
 
 	/**
@@ -51,19 +54,6 @@ public class App {
 	 */
 	public App() {
 		initialize();
-		
-		//change color
-		for (MyButton myButton : buttonList) {
-				myButton.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					
-				}
-			});
-		}
-		
-		
-		
-		
 	}
 
 	/**
@@ -104,10 +94,10 @@ public class App {
 		UseCaseButton btnUseCase = new UseCaseButton("use case");
 		panel.add(btnUseCase);
 		
-		
-		Canvas canvas = new Canvas();
-		canvas.setBackground(Color.BLACK);
-		frame.getContentPane().add(canvas, BorderLayout.CENTER);
+		mainCanvas = new MyCanvas();
+		mainCanvas.setBackground(Color.BLACK);
+		mainCanvas .setOpaque(true);
+		frame.getContentPane().add(mainCanvas, BorderLayout.CENTER);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);

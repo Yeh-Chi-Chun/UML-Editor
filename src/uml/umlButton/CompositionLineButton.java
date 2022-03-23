@@ -7,10 +7,6 @@ public class CompositionLineButton extends MyButton {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void onClicked() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

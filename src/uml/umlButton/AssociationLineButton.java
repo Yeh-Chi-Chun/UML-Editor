@@ -6,10 +6,6 @@ public class AssociationLineButton  extends MyButton  {
 			super(buttonType);
 		}
 	
-	@Override
-	public void onClicked() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
