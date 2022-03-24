@@ -1,0 +1,91 @@
+package uml.umlAction;
+
+import java.awt.Color;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ListIterator;
+
+import uml.MyCanvas;
+import uml.umlPattern.AssociationLine;
+import uml.umlPattern.MyLine.LineArrowType;
+import uml.umlPattern.MyShape;
+import uml.umlPattern.Port;
+
+public class createLineAction extends MouseAdapter{
+	
+	private Port p1, p2;
+	private MyShape source, dest;
+	private MyCanvas canvas;
+	private LineArrowType lineArrowType;
+	
+	public createLineAction(MyCanvas canvas, LineArrowType lineArrowType) {
+		this.canvas =canvas;
+		this.lineArrowType = lineArrowType;
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// get source component
+		source = findMouseEventShape(e.getPoint());
+		
+		// if source component not null, then get nearest position(north, east, west, south) by pressed position 
+		if(source!=null)	{
+			p1 = source.getNearestPosition(e.getPoint());
+		}
+			
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// get destination component
+		dest = findMouseEventShape(e.getPoint());
+		
+		// if destination component not null, then get nearest position(north, east, west, south) by pressed position 
+		if(dest!=null) {
+			p2 = dest.getNearestPosition(e.getPoint());
+		}
+			
+		// if p1, p2 not null, source component not equal to destination component, then return
+		if(p1==null || p2==null || source == dest) {
+			return;
+		}
+			
+
+		// check line arrow type
+		switch(lineArrowType) {
+		
+			case ASSOCIATIONLINE: 
+				canvas.addLine(new AssociationLine(p1, p2, Color.black));
+				break;
+			case COMPOSITIONLINE: 
+				//canvas.addLine(new CompositionLine(p1, p2, Color.black));
+				break;
+			case GENERALIZATIONLINE: 
+				//canvas.addLine(new GeneralizationLine(p1, p2, Color.black));
+				break;
+		default:
+			System.out.println("Don't have this line type");
+			break;
+		}
+	}
+	
+	/**
+	 * Find mouse pressed shape
+	 * @param p
+	 * @return
+	 */
+	private MyShape findMouseEventShape(Point p) {
+		// find shape from the end of draw panel's shape container, because the shape of the end container have highest z-index
+		ListIterator<MyShape> li =canvas.getShapes().listIterator(canvas.getShapes().size());
+		while (li.hasPrevious()) {
+			MyShape curr = (MyShape)li.previous();
+	    	if(p.getX()>=curr.getX() && p.getX()<=curr.getX()+curr.getWidth() && p.getY()>=curr.getY() && p.getY()<=curr.getY()+curr.getHeight()){
+	    		return curr;
+	    	}		
+		}
+		
+		return null;
+	}
+
+}

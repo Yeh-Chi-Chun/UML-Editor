@@ -1,17 +1,22 @@
 package uml.umlAction;
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
-
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EventListener;
 import javax.swing.JComponent;
-import javax.swing.JLayeredPane;
-
 import uml.App;
 import uml.MyCanvas;
-import uml.umlAction.Mode.CurrentMode;
+import uml.umlButton.MyButton;
+import uml.umlPattern.MyLine.LineArrowType;
+import uml.umlPattern.MyShape;
 
 public class Mode{
-	static private CurrentMode currentMode = null;
-	
+	private static  CurrentMode currentMode = null;
 	
 	public enum CurrentMode
 	{
@@ -23,8 +28,15 @@ public class Mode{
 		
 	}
 	
-	static public void changeMode(CurrentMode mode ) {
+	public static  void changeMode(CurrentMode mode ) {
+		
 		System.out.println("change mode");
+		// initial state
+		removeAllMouseEvent(new ArrayList<JComponent>(App.mainCanvas.getShapes()));
+		removeAllMouseEvent(App.mainCanvas);
+		resetComponentSelect(App.mainCanvas);
+		resetButtonColor();
+		
 		currentMode = mode;
 		
 		switch (currentMode) {
@@ -32,7 +44,7 @@ public class Mode{
 			
 			break;
 		case ASSOCIATION_LINE:
-			
+			addAllMouseEvent(App.mainCanvas, new createLineAction(App.mainCanvas,LineArrowType.ASSOCIATIONLINE));
 			break;
 		case COMPOSITION_LINE:
 			
@@ -43,7 +55,7 @@ public class Mode{
 			addAllMouseEvent(App.mainCanvas, new createShapeAction(CurrentMode.CLASS,App.mainCanvas));
 			break;
 		case USECASE:
-			
+			addAllMouseEvent(App.mainCanvas, new createShapeAction(CurrentMode.USECASE,App.mainCanvas));
 			break;
 		default:System.out.println("no this event");
 			break;
@@ -54,5 +66,54 @@ public class Mode{
 		comp.addMouseListener(mouseAdapter);
 		comp.addMouseMotionListener(mouseAdapter);
 		comp.addMouseWheelListener(mouseAdapter);
+	}
+	
+	public static void addAllMouseEvent(ArrayList<JComponent> comps, MouseAdapter mouseAdapter) {
+		for (JComponent comp : comps) {
+			addAllMouseEvent(comp, mouseAdapter);
+		}
+	}
+
+	/**
+	 * remove component mouse event listener
+	 * 
+	 * @param comp
+	 */
+	public static  void removeAllMouseEvent(JComponent comp) {
+		ArrayList<EventListener> removeListenerList = new ArrayList<EventListener>();
+		removeListenerList.addAll(Arrays.asList(comp.getMouseListeners()));
+		removeListenerList.addAll(Arrays.asList(comp.getMouseMotionListeners()));
+		removeListenerList.addAll(Arrays.asList(comp.getMouseWheelListeners()));
+		for (EventListener listener : removeListenerList) {
+			comp.removeMouseListener((MouseListener) listener);
+			comp.removeMouseMotionListener((MouseMotionListener) listener);
+			comp.removeMouseWheelListener((MouseWheelListener) listener);
+		}
+	}
+
+	/**
+	 * remove components mouse event listener
+	 * 
+	 * @param comps
+	 */
+	public static void removeAllMouseEvent(ArrayList<JComponent> comps) {
+		for (JComponent comp : comps){
+			removeAllMouseEvent(comp);
+		}
+	}
+
+	public static void resetComponentSelect(MyCanvas canvas) {
+		for (MyShape s : canvas.getShapes()){
+			s.setSelected(false);
+		}
+		    canvas.repaint();
+	}
+	
+	public static void resetButtonColor() {
+    	for (MyButton button : App.buttonList) {
+    		button.setBackground(Color.white);
+    		button.setForeground(Color.black);
+		}
+    	
 	}
 }

@@ -10,8 +10,10 @@ import javax.swing.JOptionPane;
 
 import uml.MyCanvas;
 import uml.umlAction.Mode.CurrentMode;
-import uml.umlShape.ClassShape;
-import uml.umlShape.MyShape;
+import uml.umlButton.UseCaseButton;
+import uml.umlPattern.ClassShape;
+import uml.umlPattern.MyShape;
+import uml.umlPattern.UseCaseShape;
 
 public class createShapeAction extends MouseAdapter{
 	private  CurrentMode shapeType = null;
@@ -35,6 +37,9 @@ public class createShapeAction extends MouseAdapter{
 		
 		if(shapeType.equals(CurrentMode.CLASS)){
 			return new ClassShape(p.x,p.y,100,150,5,name);
+		}
+		if(shapeType.equals(CurrentMode.USECASE)){
+			return new UseCaseShape(p.x,p.y,100,50,5,name);
 		}
 		
 		return null;

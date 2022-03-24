@@ -26,12 +26,13 @@ import java.awt.Canvas;
 import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.JLayeredPane;
+import javax.swing.UIManager;
 
 public class App {
 
 	private JFrame frame;
-	static public MyCanvas mainCanvas ;
-	static ArrayList<MyButton> buttonList = new ArrayList<MyButton>();
+	public static  MyCanvas mainCanvas ;
+	public static ArrayList<MyButton> buttonList = new ArrayList<MyButton>();
 
 	/**
 	 * Launch the application.
@@ -72,30 +73,46 @@ public class App {
 		
 		
 		SelectButton btnSelect = new SelectButton("select");
+		btnSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSelect.setBackground(Color.WHITE);
 		panel.add(btnSelect);
+		buttonList.add(btnSelect);
 		
 		
 		AssociationLineButton btnAssociationLine = new AssociationLineButton("association line");
+		btnAssociationLine.setBackground(Color.WHITE);
 		panel.add(btnAssociationLine);
+		buttonList.add(btnAssociationLine);
 		
 		
 		GeneralizationLineButton btnGeneralizationLine = new GeneralizationLineButton("generalization line");
+		btnGeneralizationLine.setBackground(Color.WHITE);
 		panel.add(btnGeneralizationLine);
+		buttonList.add(btnGeneralizationLine);
 		
 		
 		CompositionLineButton btnCompositionLine = new CompositionLineButton("composition line");
+		btnCompositionLine.setBackground(Color.WHITE);
 		panel.add(btnCompositionLine);
+		buttonList.add(btnCompositionLine);
 		
 		
 	    ClassButton btnClass = new ClassButton("class");
+	    btnClass.setBackground(Color.WHITE);
 		panel.add(btnClass);
+		buttonList.add(btnClass);
 		
 		
 		UseCaseButton btnUseCase = new UseCaseButton("use case");
+		btnUseCase.setBackground(Color.WHITE);
 		panel.add(btnUseCase);
+		buttonList.add(btnUseCase);
 		
 		mainCanvas = new MyCanvas();
-		mainCanvas.setBackground(Color.BLACK);
+		mainCanvas.setBackground(Color.LIGHT_GRAY);
 		mainCanvas .setOpaque(true);
 		frame.getContentPane().add(mainCanvas, BorderLayout.CENTER);
 		

@@ -1,4 +1,4 @@
-package uml.umlShape;
+package uml.umlPattern;
 
 import java.awt.Graphics;
 import java.awt.Point;

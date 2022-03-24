@@ -13,7 +13,7 @@ public class ClassButton extends MyButton {
 		this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Mode.changeMode(CurrentMode.CLASS);
+            	onClick(CurrentMode.CLASS);
             }
         });
 	}

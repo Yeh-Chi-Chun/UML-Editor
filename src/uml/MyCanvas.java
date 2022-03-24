@@ -5,10 +5,12 @@ import java.util.ArrayList;
 
 import javax.swing.JLayeredPane;
 
-import uml.umlShape.MyShape;
+import uml.umlPattern.MyLine;
+import uml.umlPattern.MyShape;
 
 public class MyCanvas extends JLayeredPane{
 	private ArrayList<MyShape> shapes = new ArrayList<MyShape>();
+	private ArrayList<MyLine> lines = new ArrayList<MyLine>();
 	
 	
 	public MyCanvas() {
@@ -16,20 +18,21 @@ public class MyCanvas extends JLayeredPane{
 		this.setLayout(null);;
 	}
 	
-	/**
-	 * add shape on this panel's shape container
-	 * @param shape
-	 */
+	
 	public void addShape(MyShape shape) {
 		shapes.add(shape);
 		this.add(shape, Integer.valueOf(shapes.size()-1));
 		repaint();
 	}
+	
+	
+	public void addLine(MyLine line) {
+		lines.add(line);
+		//this.add(line, 0);
+		repaint();
+	}
 
-	/**
-	 * remove shape on this panel's shape container
-	 * @param shape
-	 */
+	
 	public void removeShape(MyShape shape) {
 		// remove component
 		shapes.remove(shape);
