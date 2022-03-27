@@ -12,7 +12,6 @@ import javax.swing.JComponent;
 import uml.App;
 import uml.MyCanvas;
 import uml.umlButton.MyButton;
-import uml.umlPattern.MyLine.LineArrowType;
 import uml.umlPattern.MyShape;
 
 public class Mode{
@@ -44,18 +43,19 @@ public class Mode{
 			
 			break;
 		case ASSOCIATION_LINE:
-			addAllMouseEvent(App.mainCanvas, new createLineAction(App.mainCanvas,LineArrowType.ASSOCIATIONLINE));
+			addAllMouseEvent(App.mainCanvas, new createLineAction(App.mainCanvas,CurrentMode.ASSOCIATION_LINE));
 			break;
 		case COMPOSITION_LINE:
-			
+			addAllMouseEvent(App.mainCanvas, new createLineAction(App.mainCanvas,CurrentMode.COMPOSITION_LINE));
 			break;
 		case GENERALIZATION_LINE:
-			
+			addAllMouseEvent(App.mainCanvas, new createLineAction(App.mainCanvas,CurrentMode.GENERALIZATION_LINE));
+			break;
 		case CLASS:
-			addAllMouseEvent(App.mainCanvas, new createShapeAction(CurrentMode.CLASS,App.mainCanvas));
+			addAllMouseEvent(App.mainCanvas, new createShapeAction(App.mainCanvas,CurrentMode.CLASS));
 			break;
 		case USECASE:
-			addAllMouseEvent(App.mainCanvas, new createShapeAction(CurrentMode.USECASE,App.mainCanvas));
+			addAllMouseEvent(App.mainCanvas, new createShapeAction(App.mainCanvas,CurrentMode.USECASE));
 			break;
 		default:System.out.println("no this event");
 			break;

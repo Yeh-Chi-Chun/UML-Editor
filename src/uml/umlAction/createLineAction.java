@@ -5,10 +5,11 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ListIterator;
-
 import uml.MyCanvas;
+import uml.umlAction.Mode.CurrentMode;
 import uml.umlPattern.AssociationLine;
-import uml.umlPattern.MyLine.LineArrowType;
+import uml.umlPattern.CompositionLine;
+import uml.umlPattern.GeneralizationLine;
 import uml.umlPattern.MyShape;
 import uml.umlPattern.Port;
 
@@ -17,11 +18,11 @@ public class createLineAction extends MouseAdapter{
 	private Port p1, p2;
 	private MyShape source, dest;
 	private MyCanvas canvas;
-	private LineArrowType lineArrowType;
+	private CurrentMode currentMode;
 	
-	public createLineAction(MyCanvas canvas, LineArrowType lineArrowType) {
+	public createLineAction(MyCanvas canvas, CurrentMode currentMode) {
 		this.canvas =canvas;
-		this.lineArrowType = lineArrowType;
+		this.currentMode = currentMode;
 	}
 	
 	@Override
@@ -53,16 +54,18 @@ public class createLineAction extends MouseAdapter{
 			
 
 		// check line arrow type
-		switch(lineArrowType) {
+		switch(currentMode) {
 		
-			case ASSOCIATIONLINE: 
+			case ASSOCIATION_LINE: 
 				canvas.addLine(new AssociationLine(p1, p2, Color.black));
 				break;
-			case COMPOSITIONLINE: 
-				//canvas.addLine(new CompositionLine(p1, p2, Color.black));
+			case COMPOSITION_LINE: 
+				System.out.println("COMPOSITION_LINE");
+				canvas.addLine(new CompositionLine(p1, p2, Color.black));
 				break;
-			case GENERALIZATIONLINE: 
-				//canvas.addLine(new GeneralizationLine(p1, p2, Color.black));
+			case GENERALIZATION_LINE: 
+				System.out.println("GENERALIZATION_LINE");
+				canvas.addLine(new GeneralizationLine(p1, p2, Color.black));
 				break;
 		default:
 			System.out.println("Don't have this line type");

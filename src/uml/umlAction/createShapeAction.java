@@ -23,7 +23,7 @@ public class createShapeAction extends MouseAdapter{
 		
 	}
 	
-	public createShapeAction( CurrentMode shapeType,MyCanvas canvas) {
+	public createShapeAction( MyCanvas canvas,CurrentMode shapeType) {
 		this.shapeType = shapeType;
 		this.canvas = canvas;
 	}

@@ -28,7 +28,6 @@ public class MyCanvas extends JLayeredPane{
 	
 	public void addLine(MyLine line) {
 		lines.add(line);
-		//this.add(line, 0);
 		repaint();
 	}
 
@@ -51,7 +50,14 @@ public class MyCanvas extends JLayeredPane{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		for(MyShape shape : shapes)
+		{
 			shape.draw(g);
+		}
+		for(MyLine line : lines)
+		{
+			line.draw(g);
+		}
+		
 		
 	}
 	

@@ -6,14 +6,6 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 
 public abstract class MyLine extends JComponent{
-	
-	public enum LineArrowType {
-		NORMAL,
-		ASSOCIATIONLINE,
-		COMPOSITIONLINE,
-		GENERALIZATIONLINE,
-	}
-	
 	/**
 	 * MyLine variable
 	 */
