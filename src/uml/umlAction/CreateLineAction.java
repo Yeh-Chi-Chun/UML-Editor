@@ -13,14 +13,14 @@ import uml.umlPattern.GeneralizationLine;
 import uml.umlPattern.MyShape;
 import uml.umlPattern.Port;
 
-public class createLineAction extends MouseAdapter{
+public class CreateLineAction extends MouseAdapter{
 	
 	private Port p1, p2;
 	private MyShape source, dest;
 	private MyCanvas canvas;
 	private CurrentMode currentMode;
 	
-	public createLineAction(MyCanvas canvas, CurrentMode currentMode) {
+	public CreateLineAction(MyCanvas canvas, CurrentMode currentMode) {
 		this.canvas =canvas;
 		this.currentMode = currentMode;
 	}
@@ -64,7 +64,6 @@ public class createLineAction extends MouseAdapter{
 				canvas.addLine(new CompositionLine(p1, p2, Color.black));
 				break;
 			case GENERALIZATION_LINE: 
-				System.out.println("GENERALIZATION_LINE");
 				canvas.addLine(new GeneralizationLine(p1, p2, Color.black));
 				break;
 		default:

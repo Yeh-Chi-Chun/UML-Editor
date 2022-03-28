@@ -15,15 +15,15 @@ import uml.umlPattern.ClassShape;
 import uml.umlPattern.MyShape;
 import uml.umlPattern.UseCaseShape;
 
-public class createShapeAction extends MouseAdapter{
+public class CreateShapeAction extends MouseAdapter{
 	private  CurrentMode shapeType = null;
 	private  MyCanvas canvas = null;
 
-	public createShapeAction(){
+	public CreateShapeAction(){
 		
 	}
 	
-	public createShapeAction( MyCanvas canvas,CurrentMode shapeType) {
+	public CreateShapeAction( MyCanvas canvas,CurrentMode shapeType) {
 		this.shapeType = shapeType;
 		this.canvas = canvas;
 	}

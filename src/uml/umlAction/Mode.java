@@ -40,22 +40,22 @@ public class Mode{
 		
 		switch (currentMode) {
 		case SELECT:
-			
+			addAllMouseEvent(new ArrayList<JComponent>(App.mainCanvas.getShapes()) ,new DragShapeAction(App.mainCanvas));
 			break;
 		case ASSOCIATION_LINE:
-			addAllMouseEvent(App.mainCanvas, new createLineAction(App.mainCanvas,CurrentMode.ASSOCIATION_LINE));
+			addAllMouseEvent(App.mainCanvas, new CreateLineAction(App.mainCanvas,CurrentMode.ASSOCIATION_LINE));
 			break;
 		case COMPOSITION_LINE:
-			addAllMouseEvent(App.mainCanvas, new createLineAction(App.mainCanvas,CurrentMode.COMPOSITION_LINE));
+			addAllMouseEvent(App.mainCanvas, new CreateLineAction(App.mainCanvas,CurrentMode.COMPOSITION_LINE));
 			break;
 		case GENERALIZATION_LINE:
-			addAllMouseEvent(App.mainCanvas, new createLineAction(App.mainCanvas,CurrentMode.GENERALIZATION_LINE));
+			addAllMouseEvent(App.mainCanvas, new CreateLineAction(App.mainCanvas,CurrentMode.GENERALIZATION_LINE));
 			break;
 		case CLASS:
-			addAllMouseEvent(App.mainCanvas, new createShapeAction(App.mainCanvas,CurrentMode.CLASS));
+			addAllMouseEvent(App.mainCanvas, new CreateShapeAction(App.mainCanvas,CurrentMode.CLASS));
 			break;
 		case USECASE:
-			addAllMouseEvent(App.mainCanvas, new createShapeAction(App.mainCanvas,CurrentMode.USECASE));
+			addAllMouseEvent(App.mainCanvas, new CreateShapeAction(App.mainCanvas,CurrentMode.USECASE));
 			break;
 		default:System.out.println("no this event");
 			break;

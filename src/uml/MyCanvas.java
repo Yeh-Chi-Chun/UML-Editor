@@ -22,6 +22,7 @@ public class MyCanvas extends JLayeredPane{
 	public void addShape(MyShape shape) {
 		shapes.add(shape);
 		this.add(shape, Integer.valueOf(shapes.size()-1));
+		System.out.println(Integer.valueOf(shapes.size()-1));
 		repaint();
 	}
 	
