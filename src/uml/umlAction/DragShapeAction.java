@@ -22,12 +22,13 @@ public class DragShapeAction extends MouseAdapter {
     	Mode.resetComponentSelect(canvas);
     	
     	// set current shape
-    	System.out.println(e.getSource());
     	MyShape curShape = (MyShape)e.getSource();
     	
     	// if previous shape != current shape, previous shape set unclicked
     	if(shape != curShape && shape != null)
+    	{
     		shape.setSelected(false);
+    	}
     	shape  = curShape;
     	shape.setSelected(true);
     	

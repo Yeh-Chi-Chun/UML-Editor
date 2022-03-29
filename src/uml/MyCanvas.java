@@ -22,7 +22,6 @@ public class MyCanvas extends JLayeredPane{
 	public void addShape(MyShape shape) {
 		shapes.add(shape);
 		this.add(shape, Integer.valueOf(shapes.size()-1));
-		System.out.println(Integer.valueOf(shapes.size()-1));
 		repaint();
 	}
 	
@@ -42,7 +41,10 @@ public class MyCanvas extends JLayeredPane{
 		
 		// reset all component z-order
 		for(int i=0; i<shapes.size(); i++)
+		{
 			this.add(shapes.get(i), Integer.valueOf(i));
+		}
+			
 
 		repaint();
 	}

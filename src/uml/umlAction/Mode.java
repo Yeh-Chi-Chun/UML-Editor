@@ -29,7 +29,7 @@ public class Mode{
 	
 	public static  void changeMode(CurrentMode mode ) {
 		
-		System.out.println("change mode");
+		System.out.println("change mode : "+mode.toString());
 		// initial state
 		removeAllMouseEvent(new ArrayList<JComponent>(App.mainCanvas.getShapes()));
 		removeAllMouseEvent(App.mainCanvas);

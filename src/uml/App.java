@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-
+import uml.umlAction.RenameAction;
 import uml.umlButton.AssociationLineButton;
 import uml.umlButton.ClassButton;
 import uml.umlButton.CompositionLineButton;
@@ -73,10 +73,6 @@ public class App {
 		
 		
 		SelectButton btnSelect = new SelectButton("select");
-		btnSelect.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnSelect.setBackground(Color.WHITE);
 		panel.add(btnSelect);
 		buttonList.add(btnSelect);
@@ -133,5 +129,10 @@ public class App {
 		
 		JMenuItem changeNameMenuItem = new JMenuItem("change name");
 		editMenu.add(changeNameMenuItem);
+		
+		/**
+		 * add menuItem's ActionListener
+		 */
+		changeNameMenuItem.addActionListener(new RenameAction(mainCanvas));
 	}
 }

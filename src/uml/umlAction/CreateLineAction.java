@@ -60,7 +60,6 @@ public class CreateLineAction extends MouseAdapter{
 				canvas.addLine(new AssociationLine(p1, p2, Color.black));
 				break;
 			case COMPOSITION_LINE: 
-				System.out.println("COMPOSITION_LINE");
 				canvas.addLine(new CompositionLine(p1, p2, Color.black));
 				break;
 			case GENERALIZATION_LINE: 
