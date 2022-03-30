@@ -15,7 +15,7 @@ public class MyCanvas extends JLayeredPane{
 	
 	public MyCanvas() {
 		super();
-		this.setLayout(null);;
+		this.setLayout(null);
 	}
 	
 	

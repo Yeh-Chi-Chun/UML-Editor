@@ -25,7 +25,7 @@ public class UseCaseShape extends MyShape {
 		
 		// draw string
 		g.setColor(Color.black);
-		g.setFont(new Font("Arial", Font.BOLD, 15));
+		g.setFont(new Font("SANS_SERIF", Font.BOLD, 15));
 		g.drawString(getName(), getX()+getWidth()/4, getY()+getHeight()/2);
 	}
 }

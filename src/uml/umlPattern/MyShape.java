@@ -41,8 +41,9 @@ public abstract class MyShape extends JComponent{
 
 	@Override
 	public void setName(String name) {
-		if(name == null || name.isEmpty())
+		if(name == null || name.isEmpty()) {
 			name = "";
+		}
 		super.setName(name);
 	}
 
@@ -73,11 +74,12 @@ public abstract class MyShape extends JComponent{
 	public abstract void drawCustomShape(Graphics g);
 	
 	public void drawPosition(Graphics g) {
-		if(!selected)
+		if(!selected) {
 			return;
-		
-		for(Port position: positions)
+		}
+		for(Port position: positions) {
 			position.draw(g);	
+		}
 	}
 	
 	/**
@@ -128,8 +130,9 @@ public abstract class MyShape extends JComponent{
 	
 	private void initPort() {
 		positions = new Port[4];
-		for(int i=0; i<positions.length; i++)
+		for(int i=0; i<positions.length; i++) {
 			positions[i] = new Port();
+		}
 	}
 	
 	

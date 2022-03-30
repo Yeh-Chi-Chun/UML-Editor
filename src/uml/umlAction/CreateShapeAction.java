@@ -36,10 +36,10 @@ public class CreateShapeAction extends MouseAdapter{
 		String name = JOptionPane.showInputDialog("enter Name");
 		
 		if(shapeType.equals(CurrentMode.CLASS)){
-			return new ClassShape(p.x,p.y,100,150,5,name);
+			return new ClassShape(p.x,p.y,100,150,1,name);
 		}
 		if(shapeType.equals(CurrentMode.USECASE)){
-			return new UseCaseShape(p.x,p.y,100,50,5,name);
+			return new UseCaseShape(p.x,p.y,100,50,1,name);
 		}
 		
 		return null;

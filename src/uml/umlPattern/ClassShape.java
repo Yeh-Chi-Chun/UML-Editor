@@ -36,7 +36,7 @@ public class ClassShape extends MyShape{
 	    g.fillRect(getX(), getY()+(getHeight()*3/5), getWidth(), inset);
 	    
 	    // draw string
-	    g.setFont(new Font("Arial", Font.BOLD, 15));
+	    g.setFont(new Font("SANS_SERIF", Font.BOLD, 15));
 	    g.drawString(getName(), getX()+getWidth()/4, getY()+getHeight()/7);
 	}
 

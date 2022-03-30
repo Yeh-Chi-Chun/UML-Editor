@@ -4,7 +4,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import uml.umlAction.GroupAction;
 import uml.umlAction.RenameAction;
+import uml.umlAction.UngroupAction;
 import uml.umlButton.AssociationLineButton;
 import uml.umlButton.ClassButton;
 import uml.umlButton.CompositionLineButton;
@@ -133,6 +135,8 @@ public class App {
 		/**
 		 * add menuItem's ActionListener
 		 */
+		groupMenuItem.addActionListener(new GroupAction(mainCanvas));
+		ungroupMenuItem.addActionListener(new UngroupAction(mainCanvas));
 		changeNameMenuItem.addActionListener(new RenameAction(mainCanvas));
 	}
 }

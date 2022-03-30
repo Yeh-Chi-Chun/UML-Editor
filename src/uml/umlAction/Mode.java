@@ -41,6 +41,7 @@ public class Mode{
 		switch (currentMode) {
 		case SELECT:
 			addAllMouseEvent(new ArrayList<JComponent>(App.mainCanvas.getShapes()) ,new DragShapeAction(App.mainCanvas));
+			addAllMouseEvent(App.mainCanvas, new SelectShapesAction(App.mainCanvas));
 			break;
 		case ASSOCIATION_LINE:
 			addAllMouseEvent(App.mainCanvas, new CreateLineAction(App.mainCanvas,CurrentMode.ASSOCIATION_LINE));
