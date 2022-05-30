@@ -77,12 +77,12 @@ public class CreateLineAction extends MouseAdapter{
 	 * @return
 	 */
 	private MyShape findMouseEventShape(Point p) {
-		// find shape from the end of draw panel's shape container, because the shape of the end container have highest z-index
+		// find shape from the end of canvas shape container, because the shape of the end container have highest z-index
 		ListIterator<MyShape> li =canvas.getShapes().listIterator(canvas.getShapes().size());
 		while (li.hasPrevious()) {
-			MyShape curr = (MyShape)li.previous();
-	    	if(p.getX()>=curr.getX() && p.getX()<=curr.getX()+curr.getWidth() && p.getY()>=curr.getY() && p.getY()<=curr.getY()+curr.getHeight()){
-	    		return curr;
+			MyShape currentShape = (MyShape)li.previous();
+	    	if(p.getX()>=currentShape.getX() && p.getX()<=currentShape.getX()+currentShape.getWidth() && p.getY()>=currentShape.getY() && p.getY()<=currentShape.getY()+currentShape.getHeight()){
+	    		return currentShape;
 	    	}		
 		}
 		

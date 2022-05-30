@@ -12,7 +12,6 @@ public class MyCanvas extends JLayeredPane{
 	private ArrayList<MyShape> shapes = new ArrayList<MyShape>();
 	private ArrayList<MyLine> lines = new ArrayList<MyLine>();
 	
-	
 	public MyCanvas() {
 		super();
 		this.setLayout(null);
@@ -44,8 +43,6 @@ public class MyCanvas extends JLayeredPane{
 		{
 			this.add(shapes.get(i), Integer.valueOf(i));
 		}
-			
-
 		repaint();
 	}
 	
