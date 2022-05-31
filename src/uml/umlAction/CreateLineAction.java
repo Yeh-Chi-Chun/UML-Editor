@@ -6,7 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ListIterator;
 import uml.MyCanvas;
-import uml.umlAction.Mode.CurrentMode;
+import uml.umlAction.ModeManager.CurrentMode;
 import uml.umlPattern.AssociationLine;
 import uml.umlPattern.CompositionLine;
 import uml.umlPattern.GeneralizationLine;
@@ -51,8 +51,7 @@ public class CreateLineAction extends MouseAdapter{
 		if(p1==null || p2==null || source == dest) {
 			return;
 		}
-			
-
+	
 		// check line arrow type
 		switch(currentMode) {
 		
@@ -71,11 +70,7 @@ public class CreateLineAction extends MouseAdapter{
 		}
 	}
 	
-	/**
-	 * Find mouse pressed shape
-	 * @param p
-	 * @return
-	 */
+    //Find mouse pressed shape
 	private MyShape findMouseEventShape(Point p) {
 		// find shape from the end of canvas shape container, because the shape of the end container have highest z-index
 		ListIterator<MyShape> li =canvas.getShapes().listIterator(canvas.getShapes().size());

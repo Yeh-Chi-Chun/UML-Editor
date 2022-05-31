@@ -1,8 +1,8 @@
 package uml.umlButton;
 import javax.swing.JButton;
 
-import uml.umlAction.Mode;
-import uml.umlAction.Mode.CurrentMode;
+import uml.umlAction.ModeManager;
+import uml.umlAction.ModeManager.CurrentMode;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,9 +11,11 @@ import java.awt.event.ActionEvent;
 
 public  abstract class  MyButton extends JButton{
 	
+	protected CurrentMode buttonType ;
 	
-	public MyButton(String buttonType) {
-		super(buttonType);
+	public MyButton(String buttonName) {
+		super(buttonName);
+		initButtonActionListener();
 	}
 	
     public void changeButtonColor() {
@@ -22,8 +24,21 @@ public  abstract class  MyButton extends JButton{
     }
     
     public void onClick(CurrentMode buttonType) {
-        Mode.changeMode(buttonType);
+        ModeManager.changeMode(buttonType);
         changeButtonColor();
 	}
-
+    
+    public void initButtonActionListener() {
+    	this.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+            	onClick(buttonType);
+            }
+        });
+    }
+    
+    
+    
+    
+  
 }

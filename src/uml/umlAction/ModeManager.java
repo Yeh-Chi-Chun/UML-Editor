@@ -14,8 +14,7 @@ import uml.MyCanvas;
 import uml.umlButton.MyButton;
 import uml.umlPattern.MyShape;
 
-public class Mode{
-	private static  CurrentMode currentMode = null;
+public class ModeManager{
 	
 	public enum CurrentMode
 	{
@@ -23,7 +22,7 @@ public class Mode{
 		COMPOSITION_LINE, CLASS, USECASE
 	}
 
-	public Mode() {
+	public ModeManager() {
 		
 	}
 	
@@ -36,9 +35,8 @@ public class Mode{
 		resetComponentSelect(App.mainCanvas);
 		resetButtonColor();
 		
-		currentMode = mode;
 		
-		switch (currentMode) {
+		switch (mode) {
 		case SELECT:
 			addAllMouseEvent(new ArrayList<JComponent>(App.mainCanvas.getShapes()) ,new DragShapeAction(App.mainCanvas));
 			addAllMouseEvent(App.mainCanvas, new SelectShapesAction(App.mainCanvas));
@@ -75,11 +73,7 @@ public class Mode{
 		}
 	}
 
-	/**
-	 * remove component mouse event listener
-	 * 
-	 * @param comp
-	 */
+    //remove component mouse event listener
 	public static  void removeAllMouseEvent(JComponent comp) {
 		ArrayList<EventListener> removeListenerList = new ArrayList<EventListener>();
 		removeListenerList.addAll(Arrays.asList(comp.getMouseListeners()));
@@ -92,11 +86,7 @@ public class Mode{
 		}
 	}
 
-	/**
-	 * remove components mouse event listener
-	 * 
-	 * @param comps
-	 */
+	//remove components mouse event listener
 	public static void removeAllMouseEvent(ArrayList<JComponent> comps) {
 		for (JComponent comp : comps){
 			removeAllMouseEvent(comp);
@@ -115,6 +105,5 @@ public class Mode{
     		button.setBackground(Color.white);
     		button.setForeground(Color.black);
 		}
-    	
 	}
 }

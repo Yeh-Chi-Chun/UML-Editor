@@ -1,5 +1,6 @@
 package uml.umlAction;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,9 +10,12 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import uml.MyCanvas;
-import uml.umlAction.Mode.CurrentMode;
+import uml.umlAction.ModeManager.CurrentMode;
 import uml.umlButton.UseCaseButton;
+import uml.umlPattern.AssociationLine;
 import uml.umlPattern.ClassShape;
+import uml.umlPattern.CompositionLine;
+import uml.umlPattern.GeneralizationLine;
 import uml.umlPattern.MyShape;
 import uml.umlPattern.UseCaseShape;
 
@@ -35,39 +39,16 @@ public class CreateShapeAction extends MouseAdapter{
 	public MyShape createShape(CurrentMode shapeType, Point p) {
 		String name = JOptionPane.showInputDialog("enter Name");
 		
-		if(shapeType.equals(CurrentMode.CLASS)){
-			return new ClassShape(p.x,p.y,100,150,1,name);
-		}
-		if(shapeType.equals(CurrentMode.USECASE)){
-			return new UseCaseShape(p.x,p.y,100,50,1,name);
-		}
+		switch(shapeType) {
 		
+		case CLASS: 
+			return new ClassShape(p.x,p.y,100,150,1,name);
+		case USECASE: 
+			return new UseCaseShape(p.x,p.y,100,50,1,name);
+		default:
+			System.out.println("Don't have this shape type");
+			break;
+	}
 		return null;
 	}
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-
 }

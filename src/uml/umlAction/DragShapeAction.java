@@ -19,7 +19,7 @@ public class DragShapeAction extends MouseAdapter {
 	
     public void mousePressed(MouseEvent e) {
     	// reset all component's selected to false
-    	Mode.resetComponentSelect(canvas);
+    	ModeManager.resetComponentSelect(canvas);
     	
     	// set current shape
     	MyShape curShape = (MyShape)e.getSource();

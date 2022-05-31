@@ -17,20 +17,17 @@ public class MyCanvas extends JLayeredPane{
 		this.setLayout(null);
 	}
 	
-	
 	public void addShape(MyShape shape) {
 		shapes.add(shape);
 		this.add(shape, Integer.valueOf(shapes.size()-1));
 		repaint();
 	}
 	
-	
 	public void addLine(MyLine line) {
 		lines.add(line);
 		repaint();
 	}
 
-	
 	public void removeShape(MyShape shape) {
 		// remove component
 		shapes.remove(shape);
@@ -57,8 +54,6 @@ public class MyCanvas extends JLayeredPane{
 		{
 			line.draw(g);
 		}
-		
-		
 	}
 	
 	/**
@@ -68,6 +63,4 @@ public class MyCanvas extends JLayeredPane{
 	public ArrayList<MyShape> getShapes(){
 		return shapes;
 	}
-	
-	
 }
