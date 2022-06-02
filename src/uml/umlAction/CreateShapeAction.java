@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import uml.MyCanvas;
 import uml.umlAction.ModeManager.CurrentMode;
+import uml.umlAction.umlFactory.ShapeFactory;
 import uml.umlButton.UseCaseButton;
 import uml.umlPattern.AssociationLine;
 import uml.umlPattern.ClassShape;
@@ -32,23 +33,7 @@ public class CreateShapeAction extends MouseAdapter{
 		this.canvas = canvas;
 	}
 	public void mousePressed(MouseEvent e) {
-		MyShape shape = createShape(shapeType, e.getPoint());
+		MyShape shape = ShapeFactory.createShape(shapeType, e.getPoint());
 		canvas.addShape(shape);
-	}
-	
-	public MyShape createShape(CurrentMode shapeType, Point p) {
-		String name = JOptionPane.showInputDialog("enter Name");
-		
-		switch(shapeType) {
-		
-		case CLASS: 
-			return new ClassShape(p.x,p.y,100,150,1,name);
-		case USECASE: 
-			return new UseCaseShape(p.x,p.y,100,50,1,name);
-		default:
-			System.out.println("Don't have this shape type");
-			break;
-	}
-		return null;
 	}
 }

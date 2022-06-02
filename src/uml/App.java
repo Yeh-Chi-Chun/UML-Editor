@@ -11,8 +11,12 @@ import uml.umlButton.AssociationLineButton;
 import uml.umlButton.ClassButton;
 import uml.umlButton.CompositionLineButton;
 import uml.umlButton.GeneralizationLineButton;
+import uml.umlButton.GroupMenuItem;
 import uml.umlButton.MyButton;
+import uml.umlButton.MyMenuItem;
+import uml.umlButton.RenameMenuItem;
 import uml.umlButton.SelectButton;
+import uml.umlButton.UngroupMenuItem;
 import uml.umlButton.UseCaseButton;
 
 import java.awt.BorderLayout;
@@ -64,7 +68,6 @@ public class App {
 	 */
 	private void initialize() {
 		
-		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 715, 538);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,48 +75,51 @@ public class App {
 		JPanel panel = new JPanel();
 	    frame.getContentPane().add(panel, BorderLayout.WEST);
 	    panel.setLayout(new GridLayout(6, 0, 0, 0));
-		
-		
-		SelectButton btnSelect = new SelectButton("select");
+	    
+	    App.mainCanvas = initMainCanvas(frame);
+	    initButton(panel);
+	    initMenu(frame);
+	    
+	}
+	
+	private void initButton(JPanel panel) {
+		MyButton btnSelect = new SelectButton("select");
 		btnSelect.setBackground(Color.WHITE);
 		panel.add(btnSelect);
 		buttonList.add(btnSelect);
 		
 		
-		AssociationLineButton btnAssociationLine = new AssociationLineButton("association line");
+		MyButton btnAssociationLine = new AssociationLineButton("association line");
 		btnAssociationLine.setBackground(Color.WHITE);
 		panel.add(btnAssociationLine);
 		buttonList.add(btnAssociationLine);
 		
 		
-		GeneralizationLineButton btnGeneralizationLine = new GeneralizationLineButton("generalization line");
+		MyButton btnGeneralizationLine = new GeneralizationLineButton("generalization line");
 		btnGeneralizationLine.setBackground(Color.WHITE);
 		panel.add(btnGeneralizationLine);
 		buttonList.add(btnGeneralizationLine);
 		
 		
-		CompositionLineButton btnCompositionLine = new CompositionLineButton("composition line");
+		MyButton btnCompositionLine = new CompositionLineButton("composition line");
 		btnCompositionLine.setBackground(Color.WHITE);
 		panel.add(btnCompositionLine);
 		buttonList.add(btnCompositionLine);
 		
 		
-	    ClassButton btnClass = new ClassButton("class");
+		MyButton btnClass = new ClassButton("class");
 	    btnClass.setBackground(Color.WHITE);
 		panel.add(btnClass);
 		buttonList.add(btnClass);
 		
 		
-		UseCaseButton btnUseCase = new UseCaseButton("use case");
+		MyButton btnUseCase = new UseCaseButton("use case");
 		btnUseCase.setBackground(Color.WHITE);
 		panel.add(btnUseCase);
 		buttonList.add(btnUseCase);
-		
-		mainCanvas = new MyCanvas();
-		mainCanvas.setBackground(Color.LIGHT_GRAY);
-		mainCanvas .setOpaque(true);
-		frame.getContentPane().add(mainCanvas, BorderLayout.CENTER);
-		
+	}
+	
+	private void initMenu(JFrame frame) {
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
@@ -123,20 +129,23 @@ public class App {
 		JMenu editMenu = new JMenu("Edit");
 		menuBar.add(editMenu);
 		
-		JMenuItem groupMenuItem = new JMenuItem("group");
+		MyMenuItem groupMenuItem = new GroupMenuItem("group");
 		editMenu.add(groupMenuItem);
 		
-		JMenuItem ungroupMenuItem = new JMenuItem("ungroup");
+		MyMenuItem ungroupMenuItem = new UngroupMenuItem("ungroup");
 		editMenu.add(ungroupMenuItem);
 		
-		JMenuItem changeNameMenuItem = new JMenuItem("change name");
+		MyMenuItem changeNameMenuItem = new RenameMenuItem("change name");
 		editMenu.add(changeNameMenuItem);
-		
-		/**
-		 * add menuItem's ActionListener
-		 */
-		groupMenuItem.addActionListener(new GroupAction(mainCanvas));
-		ungroupMenuItem.addActionListener(new UngroupAction(mainCanvas));
-		changeNameMenuItem.addActionListener(new RenameAction(mainCanvas));
 	}
+	
+	private MyCanvas initMainCanvas(JFrame frame) {
+		mainCanvas = new MyCanvas();
+		mainCanvas.setBackground(Color.LIGHT_GRAY);
+		mainCanvas .setOpaque(true);
+		frame.getContentPane().add(mainCanvas, BorderLayout.CENTER);
+		
+		return mainCanvas;
+	}
+	
 }

@@ -7,9 +7,11 @@ import java.awt.event.MouseEvent;
 import java.util.ListIterator;
 import uml.MyCanvas;
 import uml.umlAction.ModeManager.CurrentMode;
+import uml.umlAction.umlFactory.LineFactory;
 import uml.umlPattern.AssociationLine;
 import uml.umlPattern.CompositionLine;
 import uml.umlPattern.GeneralizationLine;
+import uml.umlPattern.MyLine;
 import uml.umlPattern.MyShape;
 import uml.umlPattern.Port;
 
@@ -51,23 +53,9 @@ public class CreateLineAction extends MouseAdapter{
 		if(p1==null || p2==null || source == dest) {
 			return;
 		}
-	
 		// check line arrow type
-		switch(currentMode) {
-		
-			case ASSOCIATION_LINE: 
-				canvas.addLine(new AssociationLine(p1, p2, Color.black));
-				break;
-			case COMPOSITION_LINE: 
-				canvas.addLine(new CompositionLine(p1, p2, Color.black));
-				break;
-			case GENERALIZATION_LINE: 
-				canvas.addLine(new GeneralizationLine(p1, p2, Color.black));
-				break;
-		default:
-			System.out.println("Don't have this line type");
-			break;
-		}
+		MyLine line = LineFactory.createLine(currentMode, p1, p2);
+		canvas.addLine(line);
 	}
 	
     //Find mouse pressed shape
