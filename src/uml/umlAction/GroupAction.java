@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import uml.MyCanvas;
+import uml.umlAction.umlFactory.ModeManager;
 import uml.umlPattern.GroupShape;
 import uml.umlPattern.MyShape;
 

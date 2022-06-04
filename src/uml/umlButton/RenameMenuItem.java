@@ -1,6 +1,7 @@
 package uml.umlButton;
 
 import uml.App;
+import uml.MyCanvas;
 import uml.umlAction.RenameAction;
 import uml.umlAction.UngroupAction;
 
@@ -12,7 +13,7 @@ public class RenameMenuItem extends MyMenuItem{
 	
 	@Override
 	public void initButtonActionListener() {
-		this.addActionListener(new RenameAction(App.mainCanvas));
+		this.addActionListener(new RenameAction(MyCanvas.getInstance()));
     }
 
 }

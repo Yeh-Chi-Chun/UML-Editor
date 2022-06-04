@@ -1,6 +1,7 @@
 package uml.umlButton;
 
 import uml.App;
+import uml.MyCanvas;
 import uml.umlAction.GroupAction;
 
 public class GroupMenuItem extends MyMenuItem{
@@ -13,7 +14,7 @@ public class GroupMenuItem extends MyMenuItem{
 	
 	@Override
 	public void initButtonActionListener() {
-		this.addActionListener(new GroupAction(App.mainCanvas));
+		this.addActionListener(new GroupAction(MyCanvas.getInstance()));
     }
 
 }

@@ -1,5 +1,6 @@
 package uml;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -9,12 +10,24 @@ import uml.umlPattern.MyLine;
 import uml.umlPattern.MyShape;
 
 public class MyCanvas extends JLayeredPane{
+	private static MyCanvas uniqueInstance;
 	private ArrayList<MyShape> shapes = new ArrayList<MyShape>();
 	private ArrayList<MyLine> lines = new ArrayList<MyLine>();
+	
 	
 	public MyCanvas() {
 		super();
 		this.setLayout(null);
+		this.setBackground(Color.LIGHT_GRAY);
+		this .setOpaque(true);
+	}
+	
+	public static MyCanvas getInstance() {
+		if(uniqueInstance == null)
+		{
+			uniqueInstance = new MyCanvas();
+		}
+		return uniqueInstance;
 	}
 	
 	public void addShape(MyShape shape) {

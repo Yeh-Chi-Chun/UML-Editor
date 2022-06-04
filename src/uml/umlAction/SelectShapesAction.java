@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import uml.MyCanvas;
+import uml.umlAction.umlFactory.ModeManager;
 import uml.umlPattern.MyShape;
 import uml.umlPattern.SelectRangeShape;
 

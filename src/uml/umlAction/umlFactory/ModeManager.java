@@ -1,4 +1,4 @@
-package uml.umlAction;
+package uml.umlAction.umlFactory;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -10,11 +10,17 @@ import java.util.Arrays;
 import java.util.EventListener;
 import javax.swing.JComponent;
 import uml.App;
+import uml.ButtonsPanel;
 import uml.MyCanvas;
+import uml.umlAction.CreateLineAction;
+import uml.umlAction.CreateShapeAction;
+import uml.umlAction.DragShapeAction;
+import uml.umlAction.SelectShapesAction;
 import uml.umlButton.MyButton;
 import uml.umlPattern.MyShape;
 
 public class ModeManager{
+	private  static MyCanvas mainCanvas = MyCanvas.getInstance();
 	
 	public enum CurrentMode
 	{
@@ -30,31 +36,31 @@ public class ModeManager{
 		
 		System.out.println("change mode : "+mode.toString());
 		// initial state
-		removeAllMouseEvent(new ArrayList<JComponent>(App.mainCanvas.getShapes()));
-		removeAllMouseEvent(App.mainCanvas);
-		resetComponentSelect(App.mainCanvas);
-		resetButtonColor();
+		removeAllMouseEvent(new ArrayList<JComponent>(mainCanvas.getShapes()));
+		removeAllMouseEvent(mainCanvas);
+		resetComponentSelect(mainCanvas);
+		ButtonsPanel.getInstance().resetButtonColor();
 		
 		
 		switch (mode) {
 		case SELECT:
-			addAllMouseEvent(new ArrayList<JComponent>(App.mainCanvas.getShapes()) ,new DragShapeAction(App.mainCanvas));
-			addAllMouseEvent(App.mainCanvas, new SelectShapesAction(App.mainCanvas));
+			addAllMouseEvent(new ArrayList<JComponent>(mainCanvas.getShapes()) ,new DragShapeAction(mainCanvas));
+			addAllMouseEvent(mainCanvas, new SelectShapesAction(mainCanvas));
 			break;
 		case ASSOCIATION_LINE:
-			addAllMouseEvent(App.mainCanvas, new CreateLineAction(App.mainCanvas,CurrentMode.ASSOCIATION_LINE));
+			addAllMouseEvent(mainCanvas, new CreateLineAction(mainCanvas,CurrentMode.ASSOCIATION_LINE));
 			break;
 		case COMPOSITION_LINE:
-			addAllMouseEvent(App.mainCanvas, new CreateLineAction(App.mainCanvas,CurrentMode.COMPOSITION_LINE));
+			addAllMouseEvent(mainCanvas, new CreateLineAction(mainCanvas,CurrentMode.COMPOSITION_LINE));
 			break;
 		case GENERALIZATION_LINE:
-			addAllMouseEvent(App.mainCanvas, new CreateLineAction(App.mainCanvas,CurrentMode.GENERALIZATION_LINE));
+			addAllMouseEvent(mainCanvas, new CreateLineAction(mainCanvas,CurrentMode.GENERALIZATION_LINE));
 			break;
 		case CLASS:
-			addAllMouseEvent(App.mainCanvas, new CreateShapeAction(App.mainCanvas,CurrentMode.CLASS));
+			addAllMouseEvent(mainCanvas, new CreateShapeAction(mainCanvas,CurrentMode.CLASS));
 			break;
 		case USECASE:
-			addAllMouseEvent(App.mainCanvas, new CreateShapeAction(App.mainCanvas,CurrentMode.USECASE));
+			addAllMouseEvent(mainCanvas, new CreateShapeAction(mainCanvas,CurrentMode.USECASE));
 			break;
 		default:System.out.println("no this event");
 			break;
@@ -100,10 +106,5 @@ public class ModeManager{
 		    canvas.repaint();
 	}
 	
-	public static void resetButtonColor() {
-    	for (MyButton button : App.buttonList) {
-    		button.setBackground(Color.white);
-    		button.setForeground(Color.black);
-		}
-	}
+	
 }

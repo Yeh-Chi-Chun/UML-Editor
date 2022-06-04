@@ -1,7 +1,8 @@
 package uml.umlAction.umlFactory;
 
 import java.awt.Color;
-import uml.umlAction.ModeManager.CurrentMode;
+
+import uml.umlAction.umlFactory.ModeManager.CurrentMode;
 import uml.umlPattern.AssociationLine;
 import uml.umlPattern.CompositionLine;
 import uml.umlPattern.GeneralizationLine;

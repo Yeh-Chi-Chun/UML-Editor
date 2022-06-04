@@ -1,6 +1,7 @@
 package uml.umlButton;
 
 import uml.App;
+import uml.MyCanvas;
 import uml.umlAction.GroupAction;
 import uml.umlAction.UngroupAction;
 
@@ -12,7 +13,7 @@ public class UngroupMenuItem extends MyMenuItem{
 	
 	@Override
 	public void initButtonActionListener() {
-		this.addActionListener(new UngroupAction(App.mainCanvas));
+		this.addActionListener(new UngroupAction(MyCanvas.getInstance()));
     }
 
 }

@@ -10,8 +10,8 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 
 import uml.MyCanvas;
-import uml.umlAction.ModeManager.CurrentMode;
 import uml.umlAction.umlFactory.ShapeFactory;
+import uml.umlAction.umlFactory.ModeManager.CurrentMode;
 import uml.umlButton.UseCaseButton;
 import uml.umlPattern.AssociationLine;
 import uml.umlPattern.ClassShape;

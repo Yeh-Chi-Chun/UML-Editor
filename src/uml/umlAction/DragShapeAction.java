@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import uml.MyCanvas;
+import uml.umlAction.umlFactory.ModeManager;
 import uml.umlPattern.MyShape;
 
 public class DragShapeAction extends MouseAdapter {

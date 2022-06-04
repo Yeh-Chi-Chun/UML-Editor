@@ -1,8 +1,8 @@
 package uml.umlButton;
 import javax.swing.JButton;
 
-import uml.umlAction.ModeManager;
-import uml.umlAction.ModeManager.CurrentMode;
+import uml.umlAction.umlFactory.ModeManager;
+import uml.umlAction.umlFactory.ModeManager.CurrentMode;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;

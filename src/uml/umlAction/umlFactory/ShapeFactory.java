@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import javax.swing.JOptionPane;
 
-import uml.umlAction.ModeManager.CurrentMode;
+import uml.umlAction.umlFactory.ModeManager.CurrentMode;
 import uml.umlPattern.ClassShape;
 import uml.umlPattern.MyShape;
 import uml.umlPattern.UseCaseShape;
