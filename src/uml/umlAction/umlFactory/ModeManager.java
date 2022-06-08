@@ -20,6 +20,7 @@ import uml.umlButton.MyButton;
 import uml.umlPattern.MyShape;
 
 public class ModeManager{
+	private static ModeManager uniqueInstance;
 	private  static MyCanvas mainCanvas = MyCanvas.getInstance();
 	
 	public enum CurrentMode
@@ -32,7 +33,15 @@ public class ModeManager{
 		
 	}
 	
-	public static  void changeMode(CurrentMode mode ) {
+	public static ModeManager getInstance() {
+		if(uniqueInstance == null)
+		{
+			uniqueInstance = new ModeManager();
+		}
+		return uniqueInstance;
+	}
+	
+	public void changeMode(CurrentMode mode ) {
 		
 		System.out.println("change mode : "+mode.toString());
 		// initial state
@@ -67,20 +76,20 @@ public class ModeManager{
 		}
 	}
 	
-	public static void addAllMouseEvent(JComponent comp, MouseAdapter mouseAdapter) {
+	public void addAllMouseEvent(JComponent comp, MouseAdapter mouseAdapter) {
 		comp.addMouseListener(mouseAdapter);
 		comp.addMouseMotionListener(mouseAdapter);
 		comp.addMouseWheelListener(mouseAdapter);
 	}
 	
-	public static void addAllMouseEvent(ArrayList<JComponent> comps, MouseAdapter mouseAdapter) {
+	public void addAllMouseEvent(ArrayList<JComponent> comps, MouseAdapter mouseAdapter) {
 		for (JComponent comp : comps) {
 			addAllMouseEvent(comp, mouseAdapter);
 		}
 	}
 
     //remove component mouse event listener
-	public static  void removeAllMouseEvent(JComponent comp) {
+	public void removeAllMouseEvent(JComponent comp) {
 		ArrayList<EventListener> removeListenerList = new ArrayList<EventListener>();
 		removeListenerList.addAll(Arrays.asList(comp.getMouseListeners()));
 		removeListenerList.addAll(Arrays.asList(comp.getMouseMotionListeners()));
@@ -93,13 +102,13 @@ public class ModeManager{
 	}
 
 	//remove components mouse event listener
-	public static void removeAllMouseEvent(ArrayList<JComponent> comps) {
+	public void removeAllMouseEvent(ArrayList<JComponent> comps) {
 		for (JComponent comp : comps){
 			removeAllMouseEvent(comp);
 		}
 	}
 
-	public static void resetComponentSelect(MyCanvas canvas) {
+	public void resetComponentSelect(MyCanvas canvas) {
 		for (MyShape s : canvas.getShapes()){
 			s.setSelected(false);
 		}

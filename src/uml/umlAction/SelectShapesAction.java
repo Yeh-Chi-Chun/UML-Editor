@@ -26,7 +26,7 @@ public class SelectShapesAction extends MouseAdapter  {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// reset all component's selected to false
-    	ModeManager.resetComponentSelect(canvas);
+    	ModeManager.getInstance().resetComponentSelect(canvas);
     	shapeContainer.clear();
     	
     	// get press point

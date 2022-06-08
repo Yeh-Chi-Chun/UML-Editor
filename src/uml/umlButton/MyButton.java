@@ -24,7 +24,7 @@ public  abstract class  MyButton extends JButton{
     }
     
     public void onClick(CurrentMode buttonType) {
-        ModeManager.changeMode(buttonType);
+        ModeManager.getInstance().changeMode(buttonType);
         changeButtonColor();
 	}
     

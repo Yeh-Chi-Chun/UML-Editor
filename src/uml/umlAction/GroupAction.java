@@ -44,7 +44,7 @@ public class GroupAction implements ActionListener{
 			groupShape.addShape(shape);
 		}
 			
-		ModeManager.addAllMouseEvent(groupShape, new DragShapeAction(canvas));
+		ModeManager.getInstance().addAllMouseEvent(groupShape, new DragShapeAction(canvas));
 		
 		// add group shape to draw panel
 		canvas.addShape(groupShape);
